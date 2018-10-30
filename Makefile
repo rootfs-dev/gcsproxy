@@ -10,4 +10,7 @@ bin/$(BIN_NAME): main.go
 
 container: bin/$(BIN_NAME)
 	cp bin/gcsproxy deploy/
-	docker build -t gcsproxy deploy
+	docker build -t docker.io/rootfs/gcsproxy:latest deploy
+
+push-image: container
+	docker push docker.io/rootfs/gcsproxy
