@@ -15,7 +15,7 @@ import (
 )
 
 var (
-	bind        = flag.String("b", "127.0.0.1:8080", "Bind address")
+	port        = flag.String("p", ":8080", "Listen port")
 	verbose     = flag.Bool("v", false, "Show access log")
 	credentials = flag.String("c", "", "The path to the keyfile. If not present, client will use your default application credentials.")
 )
@@ -136,8 +136,8 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/{bucket:[0-9a-zA-Z-_]+}/{object:.*}", wrapper(proxy)).Methods("GET", "HEAD")
 
-	log.Printf("[service] listening on %s", *bind)
-	if err := http.ListenAndServe(*bind, r); err != nil {
+	log.Printf("[service] listening on %s", *port)
+	if err := http.ListenAndServe(*port, r); err != nil {
 		log.Fatal(err)
 	}
 }
