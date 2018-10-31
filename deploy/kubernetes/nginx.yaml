@@ -1,36 +1,33 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: proxy
+  name: cache
   labels:
-    app: proxy
+    app: cache
 spec:
   ports:
-  - port: 8888
-    name: proxy
+  - port: 80
+    name: web
   selector:
-    app: gcsproxy
+    app: gcs-cache
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gcsproxy
+  name: gcs-cache
 spec:
   selector:
     matchLabels:
-      app: gcsproxy
+      app: gcs-cache
   replicas: 1
   template:
     metadata:
       labels:
-        app: gcsproxy
+        app: gcs-cache
     spec:
       containers:
       - name: gcsproxy
-        image: quay.io/rootfs/gcsproxy:latest
-        ports:
-        - containerPort: 8888
-          name: proxy
+        image: docker.io/rootfs/gcsproxy:latest
         volumeMounts:
         - name: json-key
           mountPath: /cfg
@@ -42,8 +39,24 @@ spec:
           - "-c"
           - "/cfg/gcs.json" # must match configmap 
           - "-v"
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+          name: web
+        volumeMounts:
+        - name: nginx-conf
+          mountPath: /cfg
+        command:
+          - "nginx"
+        args:
+          - "-c"
+          - "/cfg/nginx-gcs.conf"
       volumes:
         - name: json-key
           configMap:
             name: gcs-key
+        - name: nginx-conf
+          configMap:
+            name: nginx-conf
         
