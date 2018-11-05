@@ -102,8 +102,6 @@ func wrapper(fn func(w http.ResponseWriter, r *http.Request)) http.HandlerFunc {
 
 func proxy(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	log.Printf("getting %s from %s", params["object"], params["bucket"])
-	log.Printf("param %v", params)
 	obj := client.Bucket(params["bucket"]).Object(params["object"])
 	attr, err := obj.Attrs(ctx)
 	if err != nil {
@@ -123,8 +121,6 @@ func proxy(w http.ResponseWriter, r *http.Request) {
 		handleError(w, err)
 		return
 	}
-	log.Printf("reading obj")
-
 	io.Copy(w, objr)
 }
 
