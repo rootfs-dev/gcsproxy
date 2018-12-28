@@ -1,0 +1,169 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: nginx-secret
+data:
+  cert.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURuekNDQW9lZ0F3SUJBZ0lKQUxKRmhTMUEwTUtETUEwR0NTcUdTSWIzRFFFQkN3VUFNR1l4Q3pBSkJnTlYKQkFZVEFrRlZNUk13RVFZRFZRUUlEQXBUYjIxbExWTjBZWFJsTVNFd0h3WURWUVFLREJoSmJuUmxjbTVsZENCWAphV1JuYVhSeklGQjBlU0JNZEdReEh6QWRCZ05WQkFNTUZuTjBiM0poWjJVdVoyOXZaMnhsWVhCcGN5NWpiMjB3CkhoY05NVGd4TVRBMU1UWXhPREF3V2hjTk1Ua3hNVEExTVRZeE9EQXdXakJtTVFzd0NRWURWUVFHRXdKQlZURVQKTUJFR0ExVUVDQXdLVTI5dFpTMVRkR0YwWlRFaE1COEdBMVVFQ2d3WVNXNTBaWEp1WlhRZ1YybGtaMmwwY3lCUQpkSGtnVEhSa01SOHdIUVlEVlFRRERCWnpkRzl5WVdkbExtZHZiMmRzWldGd2FYTXVZMjl0TUlJQklqQU5CZ2txCmhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBdk14Y3ZjeG54cUZuQzlsVzF0NThVTXlYUmM2VTRIQk8KYy8rUklLamYxVkd1bUc4anVxbWIyeUFrdFh4OVN5OHp4cFBlZU9xdzN5Q3lXUEZVQytUWVBsUFAreFIwMHFNOApzbEFXTndBdHRsOFNUdDVvYmdHQ1pnTmdHQnBxdmJDdEoyQTRob3c1VGlNWmNNRXZaY0I3SW9pM1F1d0hPa25HClptalZlcStNVVBISXZJd29Jdm1taTFMVHVINGxPRE5IR2hHazZiSWZZUmd3VXV3b01yZUJ0L0FLYXlvaDl2QjMKaGxldml3dWRYYUFGd3hTVDNUUmFzS012ODNlYTZyeEZkUHgyc2xuVGtrZTFHYncvK1lWOUlGc1JMaGxvc1cybApmU0U0ZjdldTVKMUFmOENFSVNoUi9IYktxWEJiblpYWHlIbXdjRXpaQ2FqTWpreTVKZVM2SndJREFRQUJvMUF3ClRqQWRCZ05WSFE0RUZnUVV5Ky9WZGtsb3FCcWlSY1kvL0Fib2FNVm1Cemd3SHdZRFZSMGpCQmd3Rm9BVXkrL1YKZGtsb3FCcWlSY1kvL0Fib2FNVm1Cemd3REFZRFZSMFRCQVV3QXdFQi96QU5CZ2txaGtpRzl3MEJBUXNGQUFPQwpBUUVBUUQ0U2tlcFVLa29TWDlRM0MyenVRN1BRSUE5RkJQTjJkRDBna0prdFhNWU14T3JTazhQYmdkN3l6OC9OCkpjZ0FNVFFnQnhRRWJGQUlxa2pnT2tuQ255UEw2eDFtTlhVWWtwU3hVK2lNL2VRcURUbHIwck43anNoYUxWV3EKeVpMeVFMQTRlNURsWjJWMjgyWFFYOGQycVRFbTF6cnZzV1AvcS9vdllGd3lEeXVPRTVrdGI0M3NuNFFtNURMawpja3IyWERQcGZFUmdVc1M5eFlIRVlqUGFha2VheFI0UzlZb0xUOTVKUVNzR2N2YUtCNk1YTVAyVXl6QytXMTFiClV0bFFQZDhsTy9OWHBkQlBlVDBJQ1hCSk1rNGI1L3BBN2xzTWwwNlZHaXRBcFU1YitNMitqaXBYVS8rRzhpZjQKWVR4aHVqaUhhWmFyRElFTWw2M1czWCtDaEE9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+  cert.key: LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2Z0lCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktnd2dnU2tBZ0VBQW9JQkFRQzh6Rnk5ekdmR29XY0wKMlZiVzNueFF6SmRGenBUZ2NFNXovNUVncU4vVlVhNllieU82cVp2YklDUzFmSDFMTHpQR2s5NTQ2ckRmSUxKWQo4VlFMNU5nK1U4LzdGSFRTb3p5eVVCWTNBQzIyWHhKTzNtaHVBWUptQTJBWUdtcTlzSzBuWURpR2pEbE9JeGx3CndTOWx3SHNpaUxkQzdBYzZTY1ptYU5WNnI0eFE4Y2k4akNnaSthYUxVdE80ZmlVNE0wY2FFYVRwc2g5aEdEQlMKN0NneXQ0RzM4QXByS2lIMjhIZUdWNitMQzUxZG9BWERGSlBkTkZxd295L3pkNXJxdkVWMC9IYXlXZE9TUjdVWgp2RC81aFgwZ1d4RXVHV2l4YmFWOUlUaC90NjdrblVCL3dJUWhLRkg4ZHNxcGNGdWRsZGZJZWJCd1ROa0pxTXlPClRMa2w1TG9uQWdNQkFBRUNnZ0VCQUlLOTR0dHMyZENycFBpSG9hTmFueXcxQWV6TmlqdUNpbEc2QVg1a2M5ejkKbTdMa0JCSVhzbDZrZThkU1ZsSGlkakJsNWdKR1JBWEFWc0ZSSGFxKzV5RUNXVnkrWmNnWVVzZ0l2ZG1Jdmg4MAo1ekRHdy9xcUFPczBHeStWMjZWUTNCZ1FnaFJxdHFSdG1naURQNWR2RzlabVpzSnBRUGdVYnRnc2NPbHM5L1owCnhxeTdxL00zTXphSDZhVGNEMkJYZUpEd3RRbjh4TXQ3eDZrMnFtbllNVWdOZmJEejVROGtNSG1Qa3BTTHR3YlAKdzRKbmlyQ1VKclVvQk9hZlRlSGtxdXlMeXltKzhzN2tVUEI4UWlDM3VhaTk5QWF3TEw0V1lUcXF4VXc0ZWJrTwpHNDcwUFBJcjN1cVpNYkw2M2hFRUtvcDZ1MXVNdWF6aDVQZEdpUjJpNG9FQ2dZRUE5N2k2M1c1bG9FWjFlQytyCnRsZ1NUS0NiRExBRjhiUzVWRFVjSTg4S3JMWDl1L1pvVERLdW4rSDBqTnQvRmxYYk1qQnp6SjQrWDdhYWN0Sm8KeDhWVGdBM094cE9xUGtQd3FjNE1VSWZ0TWtRRTR2anl4YlFxem1pbE5zdkl6ODRtMloycWw2MjFMRjBSVXdHTAo5NmJOa3JzOTVkMmUwMERaYlRYKzhVUGNEUmtDZ1lFQXd4dUtaUnhDbExNWEJ4T2toQnJqc1MvOXF4S2cyOUF5CmgwQlg2cE1LOG9UR0dINSsxWVlja2daOXNQMXlNdWF5dzFDdWcxU2d2Y2RHUjNLMldqT2NEVjlKNUxTZ3RnaloKMGdEdDRPNGgza2pwZlhmSFJCbGJaSC9GaEdTLzNKamdzVnVRNmtzODVqcXNwdXlqY3I1UktYekJZR2F1Y2NNUApGSGxvRmtuWXFUOENnWUVBbmJvQlFQd0p1UU1qeUdLUjhvZ2hIcWtrRC9BRDJPSTVIbVN5aGhwTnNhb3U1SDcvCjZZUmJxM0V6Ukh4OWJyczcxYmtFQWtTL2NqSFNKVW5UYlY4MnkxSC9WbkN1OVBaTlJkRHNCbHFGckh1aW9PSGgKc2dBRlFXZGZ5b1AyV0ZucVlxVUErWktneUo1NWFXQ1N2aHgyeC9ad2N1dXBOTmtWbDNQSjM5UlZTQUVDZ1lCcQozVkxZUHJwWktCNmN5YTE2amgvWWxTaWo0dmdvYmNpL1BBYnJmTTZxTnY4cHUxOU5KTC9SVzZ6TW5JVklUQVB0CjV1c3ZFOU5YSHliblMzV0Z3bTdmQkNvOUVwSlVJbFRzS1lZaGhVMFhxMmY0U1ByajJkK3RGQzdqYlN1SmNGTGgKMGYxMTF1L3NTb2IyaHZhZmlvNTU0dE1vTWhXcVNlU2dtajdndG1IdGtRS0JnR3o4a1Z3MDdqVkVYRGJqYlIxRAo2MW5RMHQzUVZ0Z0xUOURBU0QrWFhDSkhpN1RaQXg0Wm9qV2M1T1VYZ09lU0NDc1F0MUxvMTdzLzBjMzRxTFYzCjVaUEdBMlNlWVU2aFVLVkFvbGJwanMzVFRDVUNnZGJaS0d3WlNHOWJUczdWeWdJdUI4b0ErMXdzYjBBWk9Cc1kKOUx3aERCYWlrUHNKeC9FTWRhVmRqZ0FJCi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-conf
+data:
+  nginx-gcs.conf: |
+    user nginx;
+    worker_processes  1;
+    daemon off;
+    error_log  /dev/stdout info;
+    # pid        /var/lib/nginx/nginx.pid;
+
+
+    events {
+        worker_connections  1024;
+    }
+
+
+    http {
+        include           /etc/nginx/mime.types;
+        default_type      application/octet-stream;
+        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                          '$status $body_bytes_sent "$http_referer" '
+                          '"$http_user_agent" "$http_x_forwarded_for"';
+        access_log        /var/log/nginx/access.log  main;
+        server_tokens     off;
+        gzip              on;
+        gzip_disable      "msie6";
+        gzip_comp_level   6;
+        gzip_min_length   1100;
+        gzip_buffers      16 8k;
+        gzip_proxied      any;
+        gzip_types
+            text/plain
+            text/css
+            text/js
+            text/xml
+            text/javascript
+            application/javascript
+            application/x-javascript
+            application/json
+            application/xml
+            application/xml+rss;
+        proxy_cache_path  /var/cache/nginx keys_zone=google-cloud-storage:10m inactive=60m;
+        resolver          8.8.8.8 valid=300s ipv6=off;
+        resolver_timeout  10s;
+
+        upstream google-cloud-storage {
+           server          '127.0.0.1:8888';
+           keepalive       100;
+       }
+
+        server {
+            listen          443;
+
+            ssl_certificate           /etc/nginx/cert/cert.crt;
+            ssl_certificate_key       /etc/nginx/cert/cert.key;
+            ssl on;
+
+            if ( $request_method !~ "GET|HEAD" ) {
+                return 405;
+            }
+
+            location = / {
+                rewrite ^.*$ /index.html last;
+            }
+
+            location = /healthz/ {
+                access_log off;
+                return 200;
+            }
+
+            location / {
+                proxy_ignore_headers    Expires Cache-Control;
+                proxy_cache             google-cloud-storage;
+                proxy_cache_key         "$host/$proxy_host$uri";
+                proxy_cache_valid       200 1d;
+                add_header              X-Cache $upstream_cache_status;
+                proxy_pass              https://google-cloud-storage$uri;
+            }
+        }
+    }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cache
+  labels:
+    app: cache
+spec:
+  ports:
+  - port: 443
+    name: https
+  selector:
+    app: gcs-cache
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gcs-cache
+spec:
+  selector:
+    matchLabels:
+      app: gcs-cache
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gcs-cache
+    spec:
+      containers:
+      - name: gcsproxy
+        image: docker.io/rootfs/gcsproxy:latest
+#        imagePullPolicy: Always
+        volumeMounts:
+        - name: json-key
+          mountPath: /cfg
+        - name: nginx-secret
+          mountPath: /etc/nginx/cert
+        command:
+          - "/usr/bin/gcsproxy"
+        args:
+          - "-p"
+          - ":8888"
+          - "-c"
+          - "/cfg/gcs.json" # must match configmap 
+          - "-v"
+          - "-s"
+          - "/etc/nginx/cert/cert.crt" # must match secret
+          - "-k"
+          - "/etc/nginx/cert/cert.key"
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 443
+          name: https
+        volumeMounts:
+        - name: nginx-conf
+          mountPath: /cfg
+        - name: nginx-secret
+          mountPath: /etc/nginx/cert
+        command:
+          - "nginx"
+        args:
+          - "-c"
+          - "/cfg/nginx-gcs.conf"
+      volumes:
+        - name: json-key
+          configMap:
+            name: gcs-key
+        - name: nginx-conf
+          configMap:
+            name: nginx-conf
+        - name: nginx-secret
+          secret:
+            secretName: nginx-secret
+            items:
+            - key: cert.crt
+              path: cert.crt
+            - key: cert.key              
+              path: cert.key

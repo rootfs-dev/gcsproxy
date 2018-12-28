@@ -18,6 +18,8 @@ var (
 	port        = flag.String("p", ":8080", "Listen port")
 	verbose     = flag.Bool("v", false, "Show access log")
 	credentials = flag.String("c", "", "The path to the keyfile. If not present, client will use your default application credentials.")
+	cert        = flag.String("s", "", "tls certificate")
+	key         = flag.String("k", "", "tls key")
 )
 
 var (
@@ -103,6 +105,7 @@ func proxy(w http.ResponseWriter, r *http.Request) {
 	obj := client.Bucket(params["bucket"]).Object(params["object"])
 	attr, err := obj.Attrs(ctx)
 	if err != nil {
+		log.Printf("failed to get attr: %v", err)
 		handleError(w, err)
 		return
 	}
@@ -114,6 +117,7 @@ func proxy(w http.ResponseWriter, r *http.Request) {
 	setIntHeader(w, "Content-Length", attr.Size)
 	objr, err := obj.NewReader(ctx)
 	if err != nil {
+		log.Printf("failed to read %v", err)
 		handleError(w, err)
 		return
 	}
@@ -136,8 +140,13 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/{bucket:[0-9a-zA-Z-_]+}/{object:.*}", wrapper(proxy)).Methods("GET", "HEAD")
 
-	log.Printf("[service] listening on %s", *port)
-	if err := http.ListenAndServe(*port, r); err != nil {
+	log.Printf("[service] listening on %s, cert %s key %s", *port, *cert, *key)
+	if cert == nil || len(*cert) == 0 || key == nil || len(*key) == 0 {
+		err = http.ListenAndServe(*port, r)
+	} else {
+		err = http.ListenAndServeTLS(*port, *cert, *key, r)
+	}
+	if err != nil {
 		log.Fatal(err)
 	}
 }
